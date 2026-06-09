@@ -1,0 +1,2762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vetrina — Shop Local, Shine Together</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a3c2b;
+            --primary-light: #2d5a45;
+            --primary-dark: #142e21;
+            --accent: #c8a97e;
+            --accent-hover: #b8986a;
+            --bg: #faf9f6;
+            --bg-warm: #f5f0e8;
+            --text: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --text-light: #9a9a9a;
+            --border: #e5e5e5;
+            --white: #ffffff;
+            --success: #2d5a45;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.08);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Announcement Bar */
+        .announcement {
+            background: var(--primary);
+            color: var(--white);
+            padding: 10px 0;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .announcement .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .announcement-social {
+            display: flex;
+            gap: 16px;
+        }
+
+        .announcement-social a {
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .announcement-social a:hover {
+            opacity: 1;
+        }
+
+        .announcement-social svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text);
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav a:hover {
+            color: var(--primary);
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 8px 16px;
+            gap: 8px;
+            width: 260px;
+        }
+
+        .search-box input {
+            border: none;
+            background: none;
+            font-size: 13px;
+            outline: none;
+            width: 100%;
+            font-family: inherit;
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-light);
+        }
+
+        .search-box svg {
+            width: 16px;
+            height: 16px;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+
+        .icon-btn {
+            position: relative;
+            padding: 8px;
+            transition: transform 0.2s;
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .icon-btn svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--text);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .badge {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            color: var(--white);
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 72px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 24px;
+            flex-direction: column;
+            gap: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mobile-nav.open {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            font-size: 16px;
+            font-weight: 500;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-warm) 0%, var(--bg) 100%);
+            padding: 60px 0 80px;
+            overflow: hidden;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 540px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary-light);
+            background: rgba(45, 90, 69, 0.08);
+            padding: 6px 14px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-accent:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-trust {
+            display: flex;
+            gap: 24px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .trust-item svg {
+            width: 20px;
+            height: 20px;
+            color: var(--primary);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image-frame {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+            height: 480px;
+            background: var(--primary);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .hero-image-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            padding: 40px;
+            text-align: center;
+            background: linear-gradient(to top, rgba(26, 60, 43, 0.7), transparent);
+        }
+
+        .hero-image-overlay .logo-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.15);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-image-overlay .logo-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--white);
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .hero-image-overlay h3 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .hero-image-overlay p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            box-shadow: var(--shadow-lg);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-card.card-1 {
+            top: 40px;
+            left: -20px;
+            animation-delay: 0s;
+        }
+
+        .floating-card.card-2 {
+            bottom: 60px;
+            right: -30px;
+            animation-delay: 3s;
+        }
+
+        .floating-card .stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 6px;
+        }
+
+        .floating-card .stars svg {
+            width: 14px;
+            height: 14px;
+            fill: #f0c040;
+        }
+
+        .floating-card p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .floating-card .author {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text);
+            margin-top: 6px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 32px 0;
+        }
+
+        .stats-bar .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .stat-item p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Categories */
+        .categories {
+            padding: 80px 0;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+        }
+
+        .category-card {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .category-card:hover .category-img {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .category-img {
+            aspect-ratio: 1;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: 12px;
+            background: var(--bg-warm);
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.3s;
+        }
+
+        .category-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .category-card:hover .category-img img {
+            transform: scale(1.08);
+        }
+
+        .category-card h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Products */
+        .products {
+            padding: 60px 0 80px;
+            background: var(--white);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .product-card {
+            background: var(--bg);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-img {
+            aspect-ratio: 1;
+            background: var(--bg-warm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-wishlist {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+            z-index: 2;
+        }
+
+        .product-wishlist:hover {
+            transform: scale(1.1);
+            background: #fff0f0;
+        }
+
+        .product-wishlist svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--text);
+            stroke-width: 2;
+            fill: none;
+            transition: fill 0.2s;
+        }
+
+        .product-wishlist.active svg {
+            fill: #e74c3c;
+            stroke: #e74c3c;
+        }
+
+        .product-info {
+            padding: 16px;
+        }
+
+        .product-seller {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .product-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .product-price {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .product-price .old {
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--text-light);
+            text-decoration: line-through;
+            margin-left: 8px;
+        }
+
+        /* Seller Banner */
+        .seller-banner {
+            background: var(--primary);
+            color: var(--white);
+            padding: 48px 0;
+        }
+
+        .seller-banner .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .seller-banner-content {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .seller-banner-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(255,255,255,0.1);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .seller-banner-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--white);
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .seller-banner h3 {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        .seller-banner p {
+            font-size: 15px;
+            opacity: 0.85;
+        }
+
+        .seller-banner .btn {
+            background: var(--white);
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .seller-banner .btn:hover {
+            background: var(--bg-warm);
+        }
+
+        /* Shops */
+        .shops {
+            padding: 80px 0;
+        }
+
+        .shops-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .shop-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .shop-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .shop-img {
+            aspect-ratio: 16/10;
+            background: var(--bg-warm);
+            position: relative;
+        }
+
+        .shop-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .shop-img .verified {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--white);
+            padding: 4px 10px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .shop-img .verified svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--success);
+        }
+
+        .shop-info {
+            padding: 16px;
+        }
+
+        .shop-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .shop-category {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .shop-btn {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            transition: all 0.2s;
+        }
+
+        .shop-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        /* Why Section */
+        .why-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .why-visual {
+            position: relative;
+        }
+
+        .why-visual-img {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .why-visual-img img {
+            width: 100%;
+            height: auto;
+        }
+
+        .why-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 20px 24px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .why-badge h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .why-badge p {
+            font-size: 13px;
+            opacity: 0.85;
+        }
+
+        .why-content h2 {
+            font-size: 36px;
+            margin-bottom: 24px;
+        }
+
+        .why-content h2 span {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .why-content > p {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .why-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .why-item-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--bg-warm);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .why-item-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--primary);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .why-item h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .why-item p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .step-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .step-card:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 48px;
+            right: -24px;
+            width: 24px;
+            height: 2px;
+            background: var(--border);
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background: var(--bg-warm);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .step-card h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .step-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .pricing-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .pricing-toggle span {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .pricing-toggle span.active {
+            color: var(--text);
+        }
+
+        .toggle-switch {
+            width: 48px;
+            height: 26px;
+            background: var(--primary);
+            border-radius: 100px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 20px;
+            height: 20px;
+            background: var(--white);
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .toggle-switch.commission::after {
+            transform: translateX(22px);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--bg);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.popular {
+            border-color: var(--accent);
+            background: var(--white);
+        }
+
+        .pricing-card.popular::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .pricing-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .pricing-card .price {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .pricing-card .price span {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .pricing-card .price .commission-text {
+            display: none;
+            font-size: 24px;
+        }
+
+        .pricing-card .price .commission-text.active {
+            display: inline;
+        }
+
+        .pricing-card .price .subscription-text {
+            display: inline;
+        }
+
+        .pricing-card .price .subscription-text.hidden {
+            display: none;
+        }
+
+        .pricing-features {
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            font-size: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pricing-features li svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--success);
+            stroke-width: 2.5;
+            fill: none;
+            flex-shrink: 0;
+        }
+
+        .pricing-features li.muted {
+            color: var(--text-light);
+        }
+
+        .pricing-features li.muted svg {
+            stroke: var(--text-light);
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Guarantees */
+        .guarantees {
+            padding: 80px 0;
+        }
+
+        .guarantees-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .guarantee-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .guarantee-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .guarantee-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--bg-warm);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+
+        .guarantee-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--primary);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .guarantee-card h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .guarantee-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Comparison */
+        .comparison {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .comparison-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 48px;
+        }
+
+        .comparison-tab {
+            padding: 12px 24px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            background: var(--bg);
+            color: var(--text-muted);
+            transition: all 0.3s;
+        }
+
+        .comparison-tab.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .comparison-tab:hover:not(.active) {
+            background: var(--bg-warm);
+            color: var(--text);
+        }
+
+        .comparison-table {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-row.header {
+            background: var(--primary);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-row > div {
+            padding: 16px 24px;
+            font-size: 14px;
+        }
+
+        .comparison-row .feature {
+            font-weight: 500;
+        }
+
+        .comparison-row .check {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .comparison-row .cross {
+            color: var(--text-light);
+        }
+
+        .comparison-row .highlight {
+            background: rgba(200, 169, 126, 0.08);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-stars svg {
+            width: 18px;
+            height: 18px;
+            fill: #f0c040;
+        }
+
+        .testimonial-card p {
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-author img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .testimonial-author div h5 {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .testimonial-author div span {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 60%);
+        }
+
+        .cta-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .cta-section .btn {
+            font-size: 16px;
+            padding: 16px 36px;
+        }
+
+        .cta-section .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .cta-section .btn-primary:hover {
+            background: var(--accent-hover);
+        }
+
+        .cta-features {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 40px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .cta-features span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-features svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--accent);
+            stroke-width: 2.5;
+            fill: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 64px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand .logo {
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            opacity: 0.7;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .footer-social a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .footer-social a svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--white);
+        }
+
+        .footer-links h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-newsletter h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-newsletter p {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 16px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 8px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius-sm);
+            background: rgba(255,255,255,0.05);
+            color: var(--white);
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+
+        .newsletter-form button {
+            padding: 12px 16px;
+            background: var(--accent);
+            color: var(--white);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--accent-hover);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 24px 0;
+            text-align: center;
+            font-size: 13px;
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .shops-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .guarantees-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            .search-box {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: flex;
+            }
+            .hero .container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .hero-visual {
+                height: auto;
+                order: -1;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero-buttons {
+                flex-direction: column;
+            }
+            .hero-trust {
+                flex-wrap: wrap;
+            }
+            .stats-bar .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .shops-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+            .why-visual {
+                order: -1;
+            }
+            .why-badge {
+                right: 10px;
+                bottom: -10px;
+                padding: 14px 18px;
+            }
+            .why-badge h4 {
+                font-size: 20px;
+            }
+            .steps {
+                grid-template-columns: 1fr;
+            }
+            .step-card:not(:last-child)::after {
+                display: none;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+            .guarantees-grid {
+                grid-template-columns: 1fr;
+            }
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            .comparison-row {
+                grid-template-columns: 1fr 1fr;
+            }
+            .comparison-row.header > div:first-child {
+                display: none;
+            }
+            .comparison-row > div:first-child {
+                grid-column: 1 / -1;
+                background: rgba(0,0,0,0.03);
+                font-weight: 600;
+            }
+            .seller-banner .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .seller-banner-content {
+                flex-direction: column;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .cta-section h2 {
+                font-size: 28px;
+            }
+            .cta-features {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .floating-card {
+                display: none;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 100px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Announcement -->
+    <div class="announcement">
+        <div class="container">
+            <div>Call us on +216 xx xxx xxx &nbsp;|&nbsp; Free shipping for orders > 200 TND</div>
+            <div class="announcement-social">
+                <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8c-3 0-5 2-5 5s2 5 5 5 5-2 5-5-2-5-5-5z"/><path d="M12 8v-3M12 20v-3M8 12H5M19 12h-3"/></svg>
+                VETRINA
+            </a>
+            <nav class="nav">
+                <a href="#categories">Categories</a>
+                <a href="#products">New Arrivals</a>
+                <a href="#products">Best Sellers</a>
+                <a href="#shops">Shops</a>
+                <a href="#why">About Us</a>
+            </nav>
+            <div class="header-actions">
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                    <input type="text" placeholder="Search for products, shops...">
+                </div>
+                <button class="icon-btn" aria-label="Account">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+                </button>
+                <button class="icon-btn" aria-label="Wishlist">
+                    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                </button>
+                <button class="icon-btn" aria-label="Cart">
+                    <svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12L6 6z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M6 6L5 3H2"/></svg>
+                    <span class="badge">2</span>
+                </button>
+                <button class="mobile-menu-btn" aria-label="Menu" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="#categories" onclick="toggleMenu()">Categories</a>
+            <a href="#products" onclick="toggleMenu()">New Arrivals</a>
+            <a href="#products" onclick="toggleMenu()">Best Sellers</a>
+            <a href="#shops" onclick="toggleMenu()">Shops</a>
+            <a href="#why" onclick="toggleMenu()">About Us</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-label">Shop Local, Shine Together</div>
+                <h1>Because every <span>business</span> deserves to be seen</h1>
+                <p>The digital mall for Tunisian small businesses. Zero technical skills. Zero setup cost. Just your products, seen by thousands.</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">Shop Now</a>
+                    <a href="#seller" class="btn btn-secondary">Explore for Sellers <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+                <div class="hero-trust">
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        Verified sellers only
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+                        Secure payments
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        Simple & fast ordering
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-frame">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=800&fit=crop" alt="Vetrina shopping bag with artisan products">
+                    <div class="hero-image-overlay">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8c-3 0-5 2-5 5s2 5 5 5 5-2 5-5-2-5-5-5z"/><path d="M12 8v-3M12 20v-3M8 12H5M19 12h-3"/></svg>
+                        </div>
+                        <h3>VETRINA</h3>
+                        <p>Shop Local, Shine Together</p>
+                    </div>
+                </div>
+                <div class="floating-card card-1">
+                    <div class="stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p>"My sales tripled in the first month. Vetrina brought me customers I never knew existed."</p>
+                    <div class="author">— Amal, Bijoux by Amal</div>
+                </div>
+                <div class="floating-card card-2">
+                    <div class="stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p>"Finally, a platform that understands small artisans. The dashboard is incredibly simple."</p>
+                    <div class="author">— Karim, Terre & Feu</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="container">
+            <div class="stat-item">
+                <h3>47+</h3>
+                <p>Verified Sellers</p>
+            </div>
+            <div class="stat-item">
+                <h3>1,200+</h3>
+                <p>Products Listed</p>
+            </div>
+            <div class="stat-item">
+                <h3>8</h3>
+                <p>Cities Covered</p>
+            </div>
+            <div class="stat-item">
+                <h3>12,000+</h3>
+                <p>Monthly Visitors</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Shop by Category</h2>
+                <p>Discover curated collections from Tunisia's finest local creators</p>
+            </div>
+            <div class="category-grid">
+                <div class="category-card fade-in">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=400&fit=crop" alt="Women's Fashion">
+                    </div>
+                    <h4>Women's Fashion</h4>
+                </div>
+                <div class="category-card fade-in">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop" alt="Beauty & Skincare">
+                    </div>
+                    <h4>Beauty & Skincare</h4>
+                </div>
+                <div class="category-card fade-in">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=400&h=400&fit=crop" alt="Accessories">
+                    </div>
+                    <h4>Accessories</h4>
+                </div>
+                <div class="category-card fade-in">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400&h=400&fit=crop" alt="Home & Living">
+                    </div>
+                    <h4>Home & Living</h4>
+                </div>
+                <div class="category-card fade-in">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1560541919-eb5c3a31b805?w=400&h=400&fit=crop" alt="Kids & Baby">
+                    </div>
+                    <h4>Kids & Baby</h4>
+                </div>
+                <div class="category-card fade-in">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=400&h=400&fit=crop" alt="More Categories">
+                    </div>
+                    <h4>More Categories</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Popular Products</h2>
+                <p>Handpicked favorites from our verified sellers this week</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card fade-in">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&h=400&fit=crop" alt="Hydrating Serum">
+                        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-seller">by Naturelle</div>
+                        <div class="product-name">Hydrating Rose Serum</div>
+                        <div class="product-price">35 TND</div>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1599643478518-17488fbbcd75?w=400&h=400&fit=crop" alt="Gold Necklace">
+                        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-seller">by Bijoux by Amal</div>
+                        <div class="product-name">Gold Minimalist Necklace</div>
+                        <div class="product-price">89 TND</div>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=400&fit=crop" alt="Leather Bag">
+                        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-seller">by Chic Tunis</div>
+                        <div class="product-name">Handcrafted Leather Tote</div>
+                        <div class="product-price">149 TND <span class="old">189 TND</span></div>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?w=400&h=400&fit=crop" alt="Scented Candle">
+                        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-seller">by Maison Douce</div>
+                        <div class="product-name">Jasmine Scented Candle</div>
+                        <div class="product-price">45 TND</div>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=400&fit=crop" alt="Olive Oil Set">
+                        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-seller">by Terre & Feu</div>
+                        <div class="product-name">Organic Olive Oil Set</div>
+                        <div class="product-price">62 TND</div>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1577937927133-66ef06acdf18?w=400&h=400&fit=crop" alt="Ceramic Mug">
+                        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-seller">by Artisanat Nabeul</div>
+                        <div class="product-name">Hand-painted Ceramic Mug</div>
+                        <div class="product-price">28 TND</div>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdd403348?w=400&h=400&fit=crop" alt="Lip Balm">
+                        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-seller">by Sahel Beauty</div>
+                        <div class="product-name">Argan Lip Balm Trio</div>
+                        <div class="product-price">32 TND</div>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=400&fit=crop" alt="Woven Basket">
+                        <button class="product-wishlist" onclick="toggleWishlist(this)" aria-label="Add to wishlist">
+                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-seller">by Douz Crafts</div>
+                        <div class="product-name">Palm Woven Storage Basket</div>
+                        <div class="product-price">55 TND</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seller Banner -->
+    <section class="seller-banner" id="seller">
+        <div class="container">
+            <div class="seller-banner-content">
+                <div class="seller-banner-icon">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M12 17v4M8 21h8"/></svg>
+                </div>
+                <div>
+                    <h3>Are you a seller?</h3>
+                    <p>Join Vetrina and be a part of the journey. Your boutique online in 5 minutes — no website needed.</p>
+                </div>
+            </div>
+            <a href="#pricing" class="btn btn-accent">Start Selling Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+    </section>
+
+    <!-- Shops -->
+    <section class="shops" id="shops">
+        <div class="container">
+            <div class="section-header">
+                <h2>New Shops on Vetrina</h2>
+                <p>Welcome the latest verified sellers to our marketplace</p>
+            </div>
+            <div class="shops-grid">
+                <div class="shop-card fade-in">
+                    <div class="shop-img">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=250&fit=crop" alt="Chic Store">
+                        <div class="verified">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            Verified
+                        </div>
+                    </div>
+                    <div class="shop-info">
+                        <div class="shop-name">Chic Store</div>
+                        <div class="shop-category">Beauty and skincare</div>
+                        <button class="shop-btn">Follow</button>
+                    </div>
+                </div>
+                <div class="shop-card fade-in">
+                    <div class="shop-img">
+                        <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=400&h=250&fit=crop" alt="Doré Accessories">
+                        <div class="verified">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            Verified
+                        </div>
+                    </div>
+                    <div class="shop-info">
+                        <div class="shop-name">Doré Accessories</div>
+                        <div class="shop-category">Jewelry & Watches</div>
+                        <button class="shop-btn">Follow</button>
+                    </div>
+                </div>
+                <div class="shop-card fade-in">
+                    <div class="shop-img">
+                        <img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=400&h=250&fit=crop" alt="Maison Douce">
+                        <div class="verified">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            Verified
+                        </div>
+                    </div>
+                    <div class="shop-info">
+                        <div class="shop-name">Maison Douce</div>
+                        <div class="shop-category">Home & Living</div>
+                        <button class="shop-btn">Follow</button>
+                    </div>
+                </div>
+                <div class="shop-card fade-in">
+                    <div class="shop-img">
+                        <img src="https://images.unsplash.com/photo-1560421683-6856ea585c78?w=400&h=250&fit=crop" alt="Kinder Corner">
+                        <div class="verified">
+                            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            Verified
+                        </div>
+                    </div>
+                    <div class="shop-info">
+                        <div class="shop-name">Kinder Corner</div>
+                        <div class="shop-category">Kids & Baby</div>
+                        <button class="shop-btn">Follow</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Vetrina -->
+    <section class="why-section" id="why">
+        <div class="container">
+            <div class="why-grid">
+                <div class="why-visual">
+                    <div class="why-visual-img">
+                        <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?w=600&h=700&fit=crop" alt="Tunisian artisan at work">
+                    </div>
+                    <div class="why-badge">
+                        <h4>200,000+</h4>
+                        <p>Small businesses in Tunisia</p>
+                    </div>
+                </div>
+                <div class="why-content">
+                    <h2>Why small businesses <span>choose</span> Vetrina</h2>
+                    <p>Over 200,000 small Tunisian businesses struggle with digital visibility. Vetrina is the digital mall where they finally get seen — without the cost or complexity of building their own website.</p>
+                    <div class="why-list">
+                        <div class="why-item fade-in">
+                            <div class="why-item-icon">
+                                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                            </div>
+                            <div>
+                                <h4>Shared Traffic = New Customers</h4>
+                                <p>On Facebook, you reach 300 friends. On Vetrina, you reach 12,000+ monthly visitors who actively search for products like yours.</p>
+                            </div>
+                        </div>
+                        <div class="why-item fade-in">
+                            <div class="why-item-icon">
+                                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                            </div>
+                            <div>
+                                <h4>Visible on Google from Day 1</h4>
+                                <p>Our mutualized SEO means your products appear in Google searches for "robe été Tunis" or "savon artisanal" — without any ad spend.</p>
+                            </div>
+                        </div>
+                        <div class="why-item fade-in">
+                            <div class="why-item-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <div>
+                                <h4>Verified Seller Badge = Trust</h4>
+                                <p>Every seller is verified. Buyers see your badge, read reviews, and buy with confidence — converting browsers into customers.</p>
+                            </div>
+                        </div>
+                        <div class="why-item fade-in">
+                            <div class="why-item-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg>
+                            </div>
+                            <div>
+                                <h4>Zero Technical Skills Needed</h4>
+                                <p>If you can take a photo and type a price, you can use Vetrina. Upload from your phone, manage orders in your dashboard.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works for Sellers</h2>
+                <p>From signup to your first sale in four simple steps</p>
+            </div>
+            <div class="steps">
+                <div class="step-card fade-in">
+                    <div class="step-number">1</div>
+                    <h4>Sign Up</h4>
+                    <p>Register your shop name, category, and city in 5 minutes. No technical setup required.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">2</div>
+                    <h4>Get Verified</h4>
+                    <p>Our team reviews your application within 24-48 hours. Simple, human verification.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">3</div>
+                    <h4>Add Products</h4>
+                    <p>Upload photos, set prices, and write descriptions from your phone or computer.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">4</div>
+                    <h4>Receive Orders</h4>
+                    <p>Orders come straight to your dashboard. Contact buyers and arrange delivery yourself.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Choose the plan that fits your business. No hidden fees, no surprises.</p>
+            </div>
+            <div class="pricing-toggle">
+                <span class="active" id="subLabel">Monthly Subscription</span>
+                <div class="toggle-switch" id="toggleSwitch" onclick="togglePricing()"></div>
+                <span id="comLabel">Commission per Sale</span>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <h3>Starter</h3>
+                    <div class="desc">For artisans testing the market</div>
+                    <div class="price">
+                        <span class="subscription-text">Free</span>
+                        <span class="commission-text">15%<span>/sale</span></span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Up to 10 products</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Basic seller page</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Standard support</li>
+                        <li class="muted"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>Dashboard analytics</li>
+                        <li class="muted"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>Priority placement</li>
+                    </ul>
+                    <a href="#cta" class="btn btn-secondary">Get Started</a>
+                </div>
+                <div class="pricing-card popular fade-in">
+                    <h3>Pro</h3>
+                    <div class="desc">For growing businesses</div>
+                    <div class="price">
+                        <span class="subscription-text">49 TND<span>/month</span></span>
+                        <span class="commission-text">8%<span>/sale</span></span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Unlimited products</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Custom shop page</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Priority support</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Dashboard analytics</li>
+                        <li class="muted"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>Priority placement</li>
+                    </ul>
+                    <a href="#cta" class="btn btn-primary">Start Free Trial</a>
+                </div>
+                <div class="pricing-card fade-in">
+                    <h3>Business</h3>
+                    <div class="desc">For established sellers</div>
+                    <div class="price">
+                        <span class="subscription-text">99 TND<span>/month</span></span>
+                        <span class="commission-text">5%<span>/sale</span></span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Unlimited products</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Branded shop page</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Priority support</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Advanced analytics</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Priority placement</li>
+                    </ul>
+                    <a href="#cta" class="btn btn-secondary">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantees -->
+    <section class="guarantees">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Guarantees to Sellers</h2>
+                <p>We believe in earning your trust every single month</p>
+            </div>
+            <div class="guarantees-grid">
+                <div class="guarantee-card fade-in">
+                    <div class="guarantee-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h4>Cancel Anytime</h4>
+                    <p>No contracts, no penalties. Leave whenever you want. We prefer to earn your loyalty.</p>
+                </div>
+                <div class="guarantee-card fade-in">
+                    <div class="guarantee-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg>
+                    </div>
+                    <h4>You Own Your Data</h4>
+                    <p>Your customer information belongs to you. We never sell data to third parties.</p>
+                </div>
+                <div class="guarantee-card fade-in">
+                    <div class="guarantee-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+                    </div>
+                    <h4>You Own Your Content</h4>
+                    <p>Your photos, brand, and products remain 100% yours. Take them with you if you leave.</p>
+                </div>
+                <div class="guarantee-card fade-in">
+                    <div class="guarantee-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                    </div>
+                    <h4>Real Human Support</h4>
+                    <p>WhatsApp and email support with < 4 hour response. Real people, not chatbots.</p>
+                </div>
+                <div class="guarantee-card fade-in">
+                    <div class="guarantee-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h4>Fair Visibility</h4>
+                    <p>Our algorithm doesn't favor big sellers. Quality and relevance determine placement.</p>
+                </div>
+                <div class="guarantee-card fade-in">
+                    <div class="guarantee-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                    </div>
+                    <h4>Guided Onboarding</h4>
+                    <p>Free WhatsApp onboarding call to help you upload your first products and go live.</p>
+                </div>
+                <div class="guarantee-card fade-in">
+                    <div class="guarantee-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                    </div>
+                    <h4>Pay Only When You Sell</h4>
+                    <p>With our commission plan, no sales means no fees. Zero risk to get started.</p>
+                </div>
+                <div class="guarantee-card fade-in">
+                    <div class="guarantee-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h4>2 Months Free</h4>
+                    <p>First 30 sellers get 2 months free on Pro plan. No credit card, no commitment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="comparison">
+        <div class="container">
+            <div class="section-header">
+                <h2>How We Compare</h2>
+                <p>See why Vetrina is the smarter choice for Tunisian sellers</p>
+            </div>
+            <div class="comparison-tabs">
+                <button class="comparison-tab active" onclick="showComparison('facebook')">vs Facebook</button>
+                <button class="comparison-tab" onclick="showComparison('shopify')">vs Shopify/Converty</button>
+            </div>
+            <div id="comparison-facebook" class="comparison-table">
+                <div class="comparison-row header">
+                    <div>Feature</div>
+                    <div>Facebook Marketplace</div>
+                    <div>Vetrina</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature">Cost</div>
+                    <div class="cross">Free</div>
+                    <div class="check highlight">Fixed subscription or commission</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature">Reach</div>
+                    <div class="cross">Limited to your friends</div>
+                    <div class="check highlight">Shared platform traffic</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature">Credibility</div>
+                    <div class="cross">Anyone can post</div>
+                    <div class="check highlight">Verified sellers only</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature">Google SEO</div>
+                    <div class="cross">None</div>
+                    <div class="check highlight">Indexed on every product</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature">Order Management</div>
+                    <div class="cross">Chaotic DMs</div>
+                    <div class="check highlight">Structured dashboard</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature">Analytics</div>
+                    <div class="cross">None</div>
+                    <div class="check highlight">Sales & views tracking</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature">Audience</div>
+                    <div class="cross">Must know you first</div>
+                    <div class="check highlight">Discovery & browsing</div>
+                </div>
+            </div>
+            <div id="comparison-shopify" class="comparison-table" style="display: none;">
+                <div class="comparison-row header">
+                    <div>Feature</div>
+                    <div>Shopify / Converty</div>
+                    <div>Vetrina</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature">Setup Cost</div>
+                    <div class="cross">1,500 - 5,000 TND</div>
+                    <div class="check highlight">Free or low monthly</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature">Traffic</div>
+                    <div class="cross">You bring your own</div>
+                    <div class="check highlight">Included in subscription</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature">SEO</div>
+                    <div class="cross">Individual (takes months)</div>
+                    <div class="check highlight">Mutualized (immediate)</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature">Network Effect</div>
+                    <div class="cross">None</div>
+                    <div class="check highlight">Strong (shared customers)</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature">Discovery</div>
+                    <div class="cross">Buyer must know your site</div>
+                    <div class="check highlight">Buyers find you organically</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature">Monthly Ads</div>
+                    <div class="cross">300-800 TND required</div>
+                    <div class="check highlight">Not required</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature">Technical Skills</div>
+                    <div class="cross">Required</div>
+                    <div class="check highlight">Zero needed</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Seller Stories</h2>
+                <p>Real results from real Tunisian businesses on Vetrina</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p>"I used to sell only to friends on Facebook. In my first month on Vetrina, I received orders from Sousse and Bizerte — cities I'd never reached before."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop" alt="Fatima">
+                        <div>
+                            <h5>Fatima B.</h5>
+                            <span>Chic Store — Tunis</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p>"I was quoted 3,000 DT for a website. With Vetrina, I was online the same day for zero setup cost. The dashboard is so simple my mother could use it."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Karim">
+                        <div>
+                            <h5>Karim L.</h5>
+                            <span>Terre & Feu — Nabeul</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p>"The 'Verified Seller' badge changed everything. Buyers stopped asking 'Is this real?' and started asking 'When can you deliver?' Trust sells."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop" alt="Amal">
+                        <div>
+                            <h5>Amal R.</h5>
+                            <span>Bijoux by Amal — Sfax</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2>Become a Founding Seller</h2>
+            <p>Join the first 30 sellers and get 2 months of Pro completely free. No credit card. No commitment. Just your products, finally seen.</p>
+            <a href="mailto:contact@vetrina.shop" class="btn btn-primary">Join Vetrina Today</a>
+            <div class="cta-features">
+                <span><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg> 2 Months Free</span>
+                <span><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg> No Credit Card</span>
+                <span><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg> Cancel Anytime</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8c-3 0-5 2-5 5s2 5 5 5 5-2 5-5-2-5-5-5z"/><path d="M12 8v-3M12 20v-3M8 12H5M19 12h-3"/></svg>
+                        VETRINA
+                    </div>
+                    <p>The digital mall for Tunisian small businesses. Giving local creators the visibility they deserve.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#products">Popular Products</a></li>
+                        <li><a href="#products">New Arrivals</a></li>
+                        <li><a href="#shops">Shops</a></li>
+                        <li><a href="#why">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>For Sellers</h4>
+                    <ul>
+                        <li><a href="#seller">Start Selling</a></li>
+                        <li><a href="#pricing">Seller Dashboard</a></li>
+                        <li><a href="#how">How It Works</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="mailto:contact@vetrina.shop">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Returns</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Get the latest updates and seller tips.</p>
+                    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Vetrina. All rights reserved. vetrina.shop</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const nav = document.getElementById('mobileNav');
+            const btn = document.querySelector('.mobile-menu-btn');
+            nav.classList.toggle('open');
+            btn.classList.toggle('active');
+        }
+
+        // Wishlist toggle
+        function toggleWishlist(btn) {
+            btn.classList.toggle('active');
+        }
+
+        // Pricing toggle
+        let commissionMode = false;
+        function togglePricing() {
+            commissionMode = !commissionMode;
+            const toggle = document.getElementById('toggleSwitch');
+            const subLabel = document.getElementById('subLabel');
+            const comLabel = document.getElementById('comLabel');
+            const subTexts = document.querySelectorAll('.subscription-text');
+            const comTexts = document.querySelectorAll('.commission-text');
+
+            if (commissionMode) {
+                toggle.classList.add('commission');
+                subLabel.classList.remove('active');
+                comLabel.classList.add('active');
+                subTexts.forEach(t => t.classList.add('hidden'));
+                comTexts.forEach(t => t.classList.add('active'));
+            } else {
+                toggle.classList.remove('commission');
+                subLabel.classList.add('active');
+                comLabel.classList.remove('active');
+                subTexts.forEach(t => t.classList.remove('hidden'));
+                comTexts.forEach(t => t.classList.remove('active'));
+            }
+        }
+
+        // Comparison tabs
+        function showComparison(type) {
+            const tabs = document.querySelectorAll('.comparison-tab');
+            const fbTable = document.getElementById('comparison-facebook');
+            const shTable = document.getElementById('comparison-shopify');
+
+            tabs.forEach(t => t.classList.remove('active'));
+            if (type === 'facebook') {
+                tabs[0].classList.add('active');
+                fbTable.style.display = 'block';
+                shTable.style.display = 'none';
+            } else {
+                tabs[1].classList.add('active');
+                fbTable.style.display = 'none';
+                shTable.style.display = 'block';
+            }
+        }
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 10) {
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.06)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Close mobile menu on resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                document.getElementById('mobileNav').classList.remove('open');
+                document.querySelector('.mobile-menu-btn').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
