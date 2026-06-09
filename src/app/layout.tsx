@@ -18,6 +18,11 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Vetrina — Shop Local, Shine Together",
   description: "The digital mall for Tunisian small businesses. Zero technical skills. Zero setup cost. Just your products, seen by thousands.",
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
