@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight, Play, Pause, RotateCcw, ArrowUpRight, DollarSign, ShoppingBag, Eye, Package, TrendingUp, CheckCircle, Star } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Play, Pause, RotateCcw, ArrowUpRight, DollarSign, ShoppingBag, Eye, Package, TrendingUp } from "lucide-react";
 
 const demoSteps = [
   {
@@ -39,17 +39,9 @@ const demoSteps = [
   },
   {
     id: 5,
-    title: "Get Verified & Trusted",
-    subtitle: "The badge that builds confidence",
-    description: "The Verified Seller badge tells buyers you are a real, trusted business. More trust = more sales.",
-    visual: "verified",
-    color: "from-emerald-500 to-green-600",
-  },
-  {
-    id: 6,
     title: "Start Selling Today",
     subtitle: "Zero setup cost. Zero risk.",
-    description: "Join 47+ verified sellers on Vetrina. Your first product can be live in 5 minutes. It is free to start.",
+    description: "Join 47+ sellers on Vetrina. Your first product can be live in 5 minutes. It is free to start.",
     visual: "start",
     color: "from-[var(--primary)] to-[var(--primary-dark)]",
   },
@@ -100,9 +92,7 @@ export default function SellerDemoPage() {
           <img src="/logo.png" alt="Vetrina" width="28" height="28" className="object-contain invert" />
           VETRINA
         </Link>
-        <div className="flex items-center gap-3">
-          <span className="text-sm opacity-80">Seller Demo</span>
-        </div>
+       
       </div>
 
       {/* Main content */}
@@ -286,21 +276,6 @@ export default function SellerDemoPage() {
                     <div className="flex items-center gap-1 text-xs text-emerald-600 font-semibold">
                       <TrendingUp className="w-3 h-3" /> 28 sold
                     </div>
-                  </div>
-                </div>
-              )}
-
-              {currentStep.visual === "verified" && (
-                <div className="flex flex-col items-center justify-center text-center py-8">
-                  <div className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mb-4">
-                    <CheckCircle className="w-10 h-10 text-emerald-600" />
-                  </div>
-                  <div className="text-lg font-semibold text-[var(--primary)] mb-1">Verified Seller</div>
-                  <div className="text-sm text-[var(--text-muted)] mb-4">Your shop is verified by Vetrina</div>
-                  <div className="flex items-center gap-1 text-sm text-[var(--text-muted)]">
-                    <Star className="w-4 h-4 fill-[#f0c040] text-[#f0c040]" />
-                    <span className="font-semibold text-[var(--text)]">4.9</span>
-                    <span>(67 reviews)</span>
                   </div>
                 </div>
               )}

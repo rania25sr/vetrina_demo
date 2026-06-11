@@ -1,9 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HowItWorks from "@/components/HowItWorks";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import CTASection from "@/components/CTASection";
-import { ArrowRight, TrendingUp, Globe, Shield, Smartphone } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function SellersPage() {
@@ -41,36 +40,7 @@ export default function SellersPage() {
           </div>
         </div>
 
-        {/* Quick stats for sellers */}
-        <div className="bg-white border-b border-[var(--border)] py-10">
-          <div className="container-main">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="text-center">
-                <TrendingUp className="w-8 h-8 text-[var(--primary)] mx-auto mb-3" />
-                <h3 className="text-2xl font-bold text-[var(--primary)] mb-1">3x</h3>
-                <p className="text-sm text-[var(--text-muted)]">Average sales increase</p>
-              </div>
-              <div className="text-center">
-                <Globe className="w-8 h-8 text-[var(--primary)] mx-auto mb-3" />
-                <h3 className="text-2xl font-bold text-[var(--primary)] mb-1">12K+</h3>
-                <p className="text-sm text-[var(--text-muted)]">Monthly visitors</p>
-              </div>
-              <div className="text-center">
-                <Shield className="w-8 h-8 text-[var(--primary)] mx-auto mb-3" />
-                <h3 className="text-2xl font-bold text-[var(--primary)] mb-1">100%</h3>
-                <p className="text-sm text-[var(--text-muted)]">Verified sellers</p>
-              </div>
-              <div className="text-center">
-                <Smartphone className="w-8 h-8 text-[var(--primary)] mx-auto mb-3" />
-                <h3 className="text-2xl font-bold text-[var(--primary)] mb-1">5 min</h3>
-                <p className="text-sm text-[var(--text-muted)]">To upload a product</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <HowItWorks />
-        <TestimonialsSection />
         <CTASection />
       </main>
       <Footer />

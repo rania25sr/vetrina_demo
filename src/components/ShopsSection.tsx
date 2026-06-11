@@ -2,7 +2,6 @@
 
 import { shops } from "@/data/fakeData";
 import { useToast } from "@/components/ToastProvider";
-import { CheckCircle } from "lucide-react";
 
 export default function ShopsSection() {
   const { showToast } = useToast();
@@ -12,7 +11,7 @@ export default function ShopsSection() {
       <div className="container-main">
         <div className="section-header">
           <h2>New Shops on Vetrina</h2>
-          <p>Welcome the latest verified sellers to our marketplace</p>
+          <p>Welcome the latest sellers to our marketplace</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {shops.slice(0, 4).map((shop) => (
@@ -22,12 +21,7 @@ export default function ShopsSection() {
             >
               <div className="aspect-[16/10] bg-[var(--bg-warm)] relative">
                 <img src={shop.image} alt={shop.name} className="w-full h-full object-cover" />
-                {shop.verified && (
-                  <div className="absolute top-3 left-3 bg-white px-2.5 py-1 rounded-full text-[11px] font-semibold text-[var(--primary)] flex items-center gap-1 shadow-sm">
-                    <CheckCircle className="w-3.5 h-3.5 fill-[var(--success)] text-white" />
-                    Verified
-                  </div>
-                )}
+
               </div>
               <div className="p-4">
                 <div className="text-[15px] font-semibold mb-1">{shop.name}</div>

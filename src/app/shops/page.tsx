@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { shops } from "@/data/fakeData";
 import { useToast } from "@/components/ToastProvider";
-import { CheckCircle, MapPin, Package, Users } from "lucide-react";
+import { MapPin, Package, Users } from "lucide-react";
 
 export default function ShopsPage() {
   const { showToast } = useToast();
@@ -17,7 +17,7 @@ export default function ShopsPage() {
           <div className="container-main text-center">
             <h1 className="text-4xl md:text-5xl text-[var(--primary)] mb-4">All Shops</h1>
             <p className="text-lg text-[var(--text-muted)] max-w-xl mx-auto">
-              Discover {shops.length} verified Tunisian sellers across 8 cities
+              Discover {shops.length} Tunisian sellers across 8 cities
             </p>
           </div>
         </div>
@@ -31,12 +31,7 @@ export default function ShopsPage() {
                 >
                   <div className="aspect-[16/10] bg-[var(--bg-warm)] relative">
                     <img src={shop.image} alt={shop.name} className="w-full h-full object-cover" />
-                    {shop.verified && (
-                      <div className="absolute top-3 left-3 bg-white px-2.5 py-1 rounded-full text-[11px] font-semibold text-[var(--primary)] flex items-center gap-1 shadow-sm">
-                        <CheckCircle className="w-3.5 h-3.5 fill-[var(--success)] text-white" />
-                        Verified
-                      </div>
-                    )}
+
                   </div>
                   <div className="p-4">
                     <div className="flex items-center justify-between mb-1">
