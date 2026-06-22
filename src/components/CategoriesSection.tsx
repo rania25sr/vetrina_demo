@@ -13,7 +13,11 @@ export default function CategoriesSection() {
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
           {categories.map((cat) => (
-            <Link key={cat.id} href="/products" className="text-center cursor-pointer group">
+            <Link
+              key={cat.id}
+              href={`/products?category=${encodeURIComponent(cat.name)}`}
+              className="text-center cursor-pointer group"
+            >
               <div className="aspect-square rounded-[var(--radius-md)] overflow-hidden mb-3 bg-[var(--bg-warm)] shadow-sm transition-shadow group-hover:shadow-lg">
                 <img
                   src={cat.image}
