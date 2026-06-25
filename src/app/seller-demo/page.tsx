@@ -89,7 +89,7 @@ export default function SellerDemoPage() {
       {/* Top bar */}
       <div className="flex items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-2 font-serif text-xl font-bold tracking-tight">
-          <img src="/logo.png" alt="Vetrina" width="28" height="28" className="object-contain invert" />
+          <img src="/vetrinademo/logo.png" alt="Vetrina" width="28" height="28" className="object-contain invert" />
           VETRINA
         </Link>
        
@@ -177,7 +177,7 @@ export default function SellerDemoPage() {
               <div className="flex items-center justify-between mb-4 pb-4 border-b border-[var(--border)]">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-[var(--primary)] rounded-lg flex items-center justify-center">
-                    <img src="/logo.png" alt="" className="w-5 h-5 object-contain invert" />
+                    <img src="/vetrinademo/logo.png" alt="" className="w-5 h-5 object-contain invert" />
                   </div>
                   <span className="text-sm font-semibold text-[var(--primary)]">Chic Store</span>
                 </div>
@@ -283,7 +283,7 @@ export default function SellerDemoPage() {
               {currentStep.visual === "start" && (
                 <div className="flex flex-col items-center justify-center text-center py-6">
                   <div className="w-16 h-16 bg-[var(--bg-warm)] rounded-full flex items-center justify-center mb-4">
-                    <img src="/logo.png" alt="" className="w-10 h-10 object-contain" />
+                    <img src="/vetrinademo/logo.png" alt="" className="w-10 h-10 object-contain" />
                   </div>
                   <div className="text-lg font-semibold text-[var(--primary)] mb-2">Ready to start?</div>
                   <div className="text-sm text-[var(--text-muted)] mb-6">Join 47+ sellers on Vetrina today</div>

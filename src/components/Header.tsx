@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useCart } from "@/components/CartContext";
 import { useWishlist } from "@/components/WishlistContext";
 import { useToast } from "@/components/ToastProvider";
+import { categories } from "@/data/fakeData";
 import {
   Menu,
   X,
@@ -30,14 +31,6 @@ export default function Header() {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const navLinks = [
-    { href: "/categories", label: "Categories" },
-    { href: "/products", label: "New Arrivals" },
-    { href: "/products", label: "Best Sellers" },
-    { href: "/shops", label: "Shops" },
-    { href: "/about", label: "About Us" },
-  ];
 
   return (
     <>
@@ -71,21 +64,56 @@ export default function Header() {
       >
         <div className="container-main flex items-center justify-between h-[72px]">
           <Link href="/" className="flex items-center gap-2.5 font-serif text-[26px] font-bold text-[var(--primary)] tracking-tight">
-            <img src="/logo.png" alt="Vetrina" width="32" height="32" className="object-contain" />
+            <img src="/vetrinademo/logo.png" alt="Vetrina" width="32" height="32" className="object-contain" />
             VETRINA
           </Link>
 
-          <nav className="hidden md:flex gap-8">
-            {navLinks.map((link) => (
+          <nav className="hidden md:flex items-center gap-8">
+            {/* Categories dropdown */}
+            <div className="relative group py-6 -my-6">
               <Link
-                key={link.label}
-                href={link.href}
-                className="text-sm font-medium text-[var(--text)] hover:text-[var(--primary)] transition relative group"
+                href="/categories"
+                className="text-sm font-medium text-[var(--text)] hover:text-[var(--primary)] transition relative"
               >
-                {link.label}
+                Categories
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[var(--accent)] transition-all group-hover:w-full" />
               </Link>
-            ))}
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="bg-white border border-[var(--border)] rounded-xl shadow-lg py-2 min-w-[220px]">
+                  {categories.map((cat) => (
+                    <Link
+                      key={cat.id}
+                      href={`/products?category=${encodeURIComponent(cat.name)}`}
+                      className="block px-4 py-2.5 text-sm text-[var(--text)] hover:bg-[var(--bg)] hover:text-[var(--primary)] transition"
+                    >
+                      {cat.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <Link
+              href="/products"
+              className="text-sm font-medium text-[var(--text)] hover:text-[var(--primary)] transition relative group"
+            >
+              Products
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[var(--accent)] transition-all group-hover:w-full" />
+            </Link>
+            <Link
+              href="/shops"
+              className="text-sm font-medium text-[var(--text)] hover:text-[var(--primary)] transition relative group"
+            >
+              Shops
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[var(--accent)] transition-all group-hover:w-full" />
+            </Link>
+            <Link
+              href="/about"
+              className="text-sm font-medium text-[var(--text)] hover:text-[var(--primary)] transition relative group"
+            >
+              About Us
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[var(--accent)] transition-all group-hover:w-full" />
+            </Link>
           </nav>
 
           <div className="flex items-center gap-5">
@@ -152,16 +180,46 @@ export default function Header() {
         {/* Mobile Nav */}
         {mobileOpen && (
           <div className="md:hidden bg-white border-b border-[var(--border)] px-6 py-6 flex flex-col gap-5 shadow-lg">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-base font-medium py-2 border-b border-[var(--border)]"
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
+            <Link
+              href="/categories"
+              className="text-base font-medium py-2 border-b border-[var(--border)]"
+              onClick={() => setMobileOpen(false)}
+            >
+              Categories
+            </Link>
+            <div className="pl-4 flex flex-col gap-2 border-l-2 border-[var(--border)]">
+              {categories.map((cat) => (
+                <Link
+                  key={cat.id}
+                  href={`/products?category=${encodeURIComponent(cat.name)}`}
+                  className="text-sm text-[var(--text-muted)] hover:text-[var(--primary)]"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {cat.name}
+                </Link>
+              ))}
+            </div>
+            <Link
+              href="/products"
+              className="text-base font-medium py-2 border-b border-[var(--border)]"
+              onClick={() => setMobileOpen(false)}
+            >
+              Products
+            </Link>
+            <Link
+              href="/shops"
+              className="text-base font-medium py-2 border-b border-[var(--border)]"
+              onClick={() => setMobileOpen(false)}
+            >
+              Shops
+            </Link>
+            <Link
+              href="/about"
+              className="text-base font-medium py-2 border-b border-[var(--border)]"
+              onClick={() => setMobileOpen(false)}
+            >
+              About Us
+            </Link>
           </div>
         )}
       </header>

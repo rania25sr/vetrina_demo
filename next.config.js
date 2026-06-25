@@ -5,6 +5,7 @@ const nextConfig = {
   ...(isProd && {
     output: 'export',
     distDir: 'dist',
+    basePath: '/vetrinademo',
   }),
   images: {
     unoptimized: true,
